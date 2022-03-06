@@ -1,4 +1,3 @@
-
 javascript: {
     var arraySanPham = new Array();
     var a = document.getElementsByClassName('shopee-form filter-form shopee-form--label-right')[0];
