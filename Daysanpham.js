@@ -250,7 +250,7 @@ function DaySanPham() {
                 var endTime = ObjSave.EndTimes;
                 var intEndtime = Number(endTime);
                 var date = new Date().getTime();
-                var end = date + 14400000;
+
                 if (date > intEndtime) {
                     /**
                     nếu thời gian hiện tại lớn hơn thời gian đã save thì thực hiện đẩy
@@ -264,7 +264,7 @@ function DaySanPham() {
                     setup thông báo đang đẩy sản phẩm và setimeout chờ đợi
                      */
                     var TimeConLai = intEndtime - date;
-                    var SoPhutDoi = Number(TimeConLai / 60000);
+                    var SoPhutDoi = Math.floor((TimeConLai / 60000));
                     var GioDoi = Math.floor(SoPhutDoi / 60);
                     if (Number(GioDoi) > 0) {
                         var Phut = SoPhutDoi % 60;
@@ -297,7 +297,7 @@ function RequestDaySanPham(ObjectSanPham) {
     xhr.addEventListener("readystatechange", function () {
         if (xhr.readyState === 4) {
             var date = new Date().getTime();
-            var end = date + 14400000;
+            var end = date + 14400000 + 60000;
             const ObjectProuct = {
                 name: tenSanPham,
                 id: id,
