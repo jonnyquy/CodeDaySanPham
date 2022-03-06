@@ -11,6 +11,7 @@ javascript: {
     var classInput = new Array(document.createElement('input'), document.createElement('input'), document.createElement('input'), document.createElement('input'), document.createElement('input'));
     for (var i = 0; i < classInput.length; i++) {
         classInput[i].className = "IdProduct";
+        classInput[i].id = "IdProduct" + i;
         classInput[i].type = 'input';
         classInput[i].style = 'height: 30px';
         classInput[i].style = 'with: 70px';
@@ -21,14 +22,15 @@ javascript: {
             classInput[i].value = ObjSave.id;
         }
         classInput[i].onclick = function () {
-            var idClass = classInput[i].value;
-			console.log("ID Input:"+idClass);
-            for(var n = 0;n<arraySanPham.length;n++){
-				var idSp = arraySanPham[n].id;
-				if(Number(idClass) == Number(idSp)){
-					document.getElementById("labelThongBao").textContent = arraySanPham[n].name;
-				}
-			}
+            var idClass = event.target.value;
+            console.log(idClass);
+            for (var n = 0; n < arraySanPham.length; n++) {
+                var idSp = arraySanPham[n].id;
+                if (Number(idClass) == Number(idSp)) {
+                    document.getElementById("labelThongBao").textContent = arraySanPham[n].name;
+                }
+            }
+
         };
 
         b.appendChild(classInput[i]);
