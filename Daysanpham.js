@@ -21,11 +21,14 @@ javascript: {
             classInput[i].value = ObjSave.id;
         }
         classInput[i].onclick = function () {
-            var strSaves = window.localStorage.getItem('Input' + i);
-            if (strSaves != null) {
-                var ObjSave = JSON.parse(strSaves);
-                document.getElementById('labelThongBao').value = ObjSave.name;
-            }
+            var idClass = classInput[i].value;
+			console.log("ID Input:"+idClass);
+            for(var n = 0;n<arraySanPham.length;n++){
+				var idSp = arraySanPham[n].id;
+				if(Number(idClass) == Number(idSp)){
+					document.getElementById("labelThongBao").textContent = arraySanPham[n].name;
+				}
+			}
         };
 
         b.appendChild(classInput[i]);
@@ -305,7 +308,6 @@ function RequestDaySanPham(ObjectSanPham) {
     });
 
     xhr.open("POST", "https://banhang.shopee.vn/api/v3/product/boost_product/?version=3.1.0&SPC_CDS=" + SPC + "&SPC_CDS_VER=2");
-
     xhr.send(data);
 
 }
@@ -348,4 +350,3 @@ function SPCCDS() {
     }
     return spccds;
 }
-
